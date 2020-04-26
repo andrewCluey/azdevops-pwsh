@@ -1,0 +1,26 @@
+apiVersion: 2018-10-01
+location: westeurope
+name: azdevops
+properties:
+  containers:
+  - name: azdevops01
+    properties:
+      environmentVariables:
+        - name: AZP_URL
+          value: https://dev.azure.com/rubix-group
+        - name: AZP_AGENT_NAME
+          value: azdevops01
+        - name: AZP_TOKEN
+          secureValue: 
+        - name: AZP_POOL
+          value: az-dev-ubn
+      image: cluey36/azdevops-pwsh
+      ports: []
+      resources:
+        requests:
+          cpu: 1.0
+          memoryInGB: 1.5
+  osType: Linux
+  restartPolicy: Always
+tags: null
+type: Microsoft.ContainerInstance/containerGroups

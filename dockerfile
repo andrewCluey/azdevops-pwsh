@@ -24,6 +24,13 @@ RUN pwsh -c "Set-PSRepository -Name PSGallery -InstallationPolicy Trusted" && \
 pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name AWSPowerShell.NetCore" && \
 pwsh -c "\$ProgressPreference = \"SilentlyContinue\"; Install-Module -Name Az -AllowPrerelease" 
 
+# Install azcopy
+RUN wget https://aka.ms/downloadazcopy-v10-linux
+# Expand Archive
+RUN tar -xvf downloadazcopy-v10-linux
+#Move AzCopy to the destination you want to store it
+RUN cp ./azcopy_linux_amd64_*/azcopy /usr/bin/
+
 WORKDIR /azp
 
 COPY ./start.sh .
