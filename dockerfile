@@ -14,7 +14,10 @@ RUN apt-get install -y --no-install-recommends \
        libcurl3 \
        libicu55 \
        libunwind8 \
-       netcat
+       netcat \
+       openssh-client \
+       unzip \
+       wget
 
 # Start PowerShell
 RUN pwsh -c "Set-PSRepository -Name PSGallery -InstallationPolicy Trusted" && \
